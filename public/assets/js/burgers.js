@@ -25,7 +25,7 @@ $(function() {
       event.preventDefault();
   
       var newBurger = {
-        name: $("#burger-input").val().trim(),
+        burger_name: $("#burger-input").val().trim()
       };
   
       // Send the POST request.
@@ -34,23 +34,23 @@ $(function() {
         data: newBurger
       }).then(
         function() {
-          console.log("created new burger");
+          console.log("created new burger!");
           // Reload the page to get the updated list
           location.reload();
         }
       );
     });
   
-    // $(".delete-cat").on("click", function(event) {
-    //   event.preventDefault();
+    $(".delete-burger").on("click", function(event) {
+      event.preventDefault();
   
-    //   var id = $(this).data("id");
+      var id = $(this).data("id");
   
-    //   $.ajax("/api/burgers/" + id, {
-    //     type: "DELETE",
-    //   }).then(function() {
-    //     console.log("Deleted cat");
-    //     location.reload();
-    //   });
-    // });
+      $.ajax("/api/burgers/" + id, {
+        type: "DELETE",
+      }).then(function() {
+        console.log("Deleted burger!");
+        location.reload();
+      });
+    });
   });
